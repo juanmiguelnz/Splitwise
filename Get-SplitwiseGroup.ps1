@@ -6,7 +6,7 @@ function Get-SplitwiseGroup {
         [string]$GroupName
     )
 
-    $Token  = $Splitwise | ConvertTo-SecureString -AsPlainText -Force
+    $Token  = $Env:Splitwise | ConvertTo-SecureString -AsPlainText -Force
 
     $Params = @{
         Method          = "GET"

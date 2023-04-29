@@ -10,36 +10,42 @@ function Invoke-SplitwiseExpense {
     )
 
     begin{
-        $Token = $Splitwise | ConvertTo-SecureString -AsPlainText -Force
+        $Token = $Env:Splitwise | ConvertTo-SecureString -AsPlainText -Force
     }
 
     process{
-        $Expense = Import-Csv $CsvFile
 
-        $Expense | ForEach-Object {
+        Import-Csv $CsvFile | ForEach-Object {
+            if (($_.Type -eq "D") -and
+                ($_.Details -notlike "Iag*") -and
+                ($_.Details -notlike "Myrepublic*") -and
+                ($_.Details -notlike "Countdown*") -and
+                ($_.Details -notlike "Pak*") -and 
+                ($_.Details -notlike "Skinny*")) {
 
-            if ($_.Type -eq "D") {
-                $Body = @{
-                    cost            = $_.Amount
-                    description     = $_.Details
-                    group_id        = $GroupID
-                    split_equally   = $true
-                }
-            
-                $JsonBody = $Body | ConvertTo-Json
+                    $TransactionDate = Get-Date -Date $_.TransactionDate -Format "o"
 
-                $Params = @{
-                    Method          = "POST"
-                    Uri             = "https://secure.splitwise.com/api/v3.0/create_expense"
-                    Body            = $JsonBody
-                    ContentType     = "application/json"
-                    Authentication  = "Bearer"
-                    Token           = $Token
-                }
+                    $Body = @{
+                        group_id        = $GroupID
+                        description     = $_.Details
+                        cost            = $_.Amount
+                        date            = $TransactionDate
+                        split_equally   = $true
+                    }
 
-                $Request = Invoke-RestMethod @Params
+                    $JsonBody = $Body | ConvertTo-Json
 
-                Write-Output $Request.expenses
+                    $Params = @{
+                        Method          = "POST"
+                        Uri             = "https://secure.splitwise.com/api/v3.0/create_expense"
+                        Body            = $JsonBody
+                        ContentType     = "application/json"
+                        Authentication  = "Bearer"
+                        Token           = $Token
+                    }
+                    $Request = Invoke-RestMethod @Params
+
+                    Write-Output $Request.expenses
             }
         }
     }
