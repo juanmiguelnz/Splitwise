@@ -1,7 +1,7 @@
 function Get-SplitwiseGroup {
     [CmdletBinding()]
     param (
-        [Parameter()]
+        [Parameter(Mandatory=$true)]
         [Alias("Name")]
         [string]$GroupName
     )
