@@ -1,5 +1,5 @@
 function Get-SplitwiseUser {
-    $Token  = $Splitwise | ConvertTo-SecureString -AsPlainText -Force
+    $Token  = $Env:Splitwise | ConvertTo-SecureString -AsPlainText -Force
 
     $Params = @{
         Method          = "GET"

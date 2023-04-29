@@ -7,7 +7,7 @@ function Add-SplitwiseUserToGroup {
         $UserID
     )
 
-    $Token  = $Splitwise | ConvertTo-SecureString -AsPlainText -Force
+    $Token  = $Env:Splitwise | ConvertTo-SecureString -AsPlainText -Force
 
     $Body = @{
         group_id    = $GroupID
