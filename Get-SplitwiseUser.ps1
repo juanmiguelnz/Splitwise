@@ -7,7 +7,7 @@ function Get-SplitwiseUser {
         Authentication  = "Bearer"
         Token           = $Token
     }
-    $Request = Invoke-RestMethod @Params -Verbose
+    $Request = Invoke-RestMethod @Params
 
     Write-Output $Request.user
 }
