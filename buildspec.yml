@@ -10,6 +10,11 @@ phases:
       - echo Entered the install phase...
       - apt-get update -y
       - apt-get install -y wget apt-transport-https software-properties-common
+      - wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb"
+      - sudo dpkg -i packages-microsoft-prod.deb
+      - rm packages-microsoft-prod.deb
+      - sudo apt-get update
+      - sudo apt-get install -y powershell
     finally:
       - echo This always runs even if the update or install command fails 
   pre_build:
