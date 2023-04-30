@@ -7,7 +7,7 @@ env:
 phases:
   install:
     commands:
-      - echo Entered the install phase...
+      - "echo INSTALL PHASE START: `date`"
       - apt-get update -y
       - apt-get install -y wget apt-transport-https software-properties-common
       - wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb"
@@ -15,6 +15,7 @@ phases:
       - rm packages-microsoft-prod.deb
       - sudo apt-get update
       - sudo apt-get install -y powershell
+      - pwsh -Command "Install-Module -Name PSScriptAnalyzer"
     finally:
       - echo This always runs even if the update or install command fails 
   pre_build:
