@@ -10,7 +10,7 @@ function Invoke-SplitwiseExpense {
     )
 
     begin{
-        $Token = $Env:Splitwise | ConvertTo-SecureString -AsPlainText -Force
+        $Token = Get-SplitwiseKey
     }
 
     process{
