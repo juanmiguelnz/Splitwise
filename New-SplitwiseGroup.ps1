@@ -1,4 +1,5 @@
 function New-SplitwiseGroup {
+    [CmdletBinding(SupportsShouldProcess)]
     param (
         [Parameter(Mandatory=$true)]
         [string]$Name,
