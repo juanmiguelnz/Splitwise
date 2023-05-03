@@ -20,7 +20,7 @@ function Invoke-SplitwiseExpense {
                 ($_.Details -notlike "Iag*") -and
                 ($_.Details -notlike "Myrepublic*") -and
                 ($_.Details -notlike "Countdown*") -and
-                ($_.Details -notlike "Pak*") -and 
+                ($_.Details -notlike "Pak*") -and
                 ($_.Details -notlike "Skinny*")) {
 
                     $TransactionDate = Get-Date -Date $_.TransactionDate -Format "o"
