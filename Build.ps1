@@ -1,7 +1,7 @@
 $Params = @{
-    SourcePath                  = ./Splitwise.psd1
-    Version                     = "1.0.$($Env:CODEBUILD_BUILD_NUMBER)"
+    SourcePath                  = "Source\Splitwise.psd1"
+    Version                     = "0.0.1"
     UnversionedOutputDirectory  = $true
 }
 
-Build-Module @Params
+Build-Module @Params -Passthru -Verbose
