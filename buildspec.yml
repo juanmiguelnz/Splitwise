@@ -17,7 +17,8 @@ phases:
       - sudo apt-get install -y powershell
       - pwsh -Command "Install-Module -Name PSScriptAnalyzer -Force"
       - pwsh -Command "Invoke-ScriptAnalyzer -Path . -Settings PSGallery -Recurse -Verbose"
-      - pwsh -Command "Install-Module -Name Pester -Force -Verbose"
+      - pwsh -Command "Install-Module -Name ModuleBuilder -Force -Verbose"
+      - pwsh -Command "./Build.ps1"
     finally:
       - echo This always runs even if the update or install command fails 
   pre_build:
