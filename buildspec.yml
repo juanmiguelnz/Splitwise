@@ -16,32 +16,17 @@ phases:
       - sudo apt-get update
       - sudo apt-get install -y powershell
       - pwsh -Command "Install-Module -Name PSScriptAnalyzer -Force"
-      - pwsh -Command "Invoke-ScriptAnalyzer -Path . -Settings PSGallery -Recurse -Verbose"
       - pwsh -Command "Install-Module -Name ModuleBuilder -Force -Verbose"
-      - pwsh -Command "./Build.ps1"
-    finally:
-      - echo This always runs even if the update or install command fails 
 
   pre_build:
     commands:
-      - echo Entered the pre_build phase...
-    finally:
-      - echo This always runs even if the login command fails
+      - pwsh -Command "Invoke-ScriptAnalyzer -Path . -Settings PSGallery -Recurse -Verbose"
 
   build:
     commands:
-      - echo Entered the build phase...
-      - echo Build started on `date`
-    finally:
-      - echo This always runs even if the install command fails
-
-  post_build:
-    commands:
-      - echo Entered the post_build phase...
-      - echo $CODEBUILD_SRC_DIR
-      - ls
+      - pwsh -Command "./Build.ps1"
 
 artifacts:
   files:
-    - '**/*'
+    - Output/Splitwise/*.ps*1
   name: Splitwise
