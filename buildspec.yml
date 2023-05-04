@@ -39,6 +39,7 @@ phases:
     commands:
       - echo Entered the post_build phase...
       - echo $CODEBUILD_SRC_DIR
+      - ls
 
 artifacts:
   files:
