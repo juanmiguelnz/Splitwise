@@ -37,6 +37,11 @@ phases:
       - echo Entered the post_build phase...
       - echo Build completed on `date`
 
+artifacts:
+  files:
+    - Output/Splitwise/*.ps*1
+  name: Splitwise
+
 # reports:
 #   arn:aws:codebuild:your-region:your-aws-account-id:report-group/report-group-name-1:
 #     files:
