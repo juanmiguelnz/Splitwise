@@ -28,6 +28,7 @@ phases:
 
   post_build:
     commands:
+      - pwsh -Command "Import-Module -Name Pester"
       - pwsh -Command "$PesterConfig = New-PesterConfiguration"
       - pwsh -Command "$PesterConfig.TestResult.OutputFormat = "NUnitXml"
       - pwsh -Command "$PesterConfig.TestResult.OutputPath = "Tests/Unit.Test.xml"
