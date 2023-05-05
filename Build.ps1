@@ -11,4 +11,4 @@ if (Test-Path -Path Env:/AWS_EXECUTION_ENV) {
         UnversionedOutputDirectory  = $true
     }
 }
-Build-Module Build-Module @Params
+Build-Module @Params
