@@ -17,6 +17,7 @@ phases:
       - sudo apt-get install -y powershell
       - pwsh -Command "Install-Module -Name PSScriptAnalyzer -Force"
       - pwsh -Command "Install-Module -Name ModuleBuilder -Force -Verbose"
+      - pwsh -Command "Install-Module -Name Pester -Force -Verbose"
 
   pre_build:
     commands:
@@ -25,6 +26,10 @@ phases:
   build:
     commands:
       - pwsh -Command "./Build.ps1"
+
+  post_build:
+    commands:
+      - pwsh -Command "Invoke-Pester -Path Tests/"
 
 artifacts:
   files:
