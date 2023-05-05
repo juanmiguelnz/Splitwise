@@ -28,11 +28,11 @@ phases:
 
   post_build:
     commands:
-      - pwsh -Command "$($PesterConfig = New-PesterConfiguration)"
-#      - pwsh -Command "$$PesterConfig.TestResult.OutputFormat = NUnitXml"
-#      - pwsh -Command "$$PesterConfig.TestResult.OutputPath = Tests/Unit.Test.xml"
-#      - pwsh -Command "$$PesterConfig.TestResult.Enabled = $$True"
-#      - pwsh -Command "Invoke-Pester -Configuration $$PesterConfig"
+      - pwsh -Command "$Env:PesterConfig = New-PesterConfiguration"
+      - pwsh -Command "$Env:PesterConfig.TestResult.OutputFormat = NUnitXml"
+      - pwsh -Command "$Env:PesterConfig.TestResult.OutputPath = Tests/Unit.Test.xml"
+      - pwsh -Command "$Env:PesterConfig.TestResult.Enabled = $$True"
+      - pwsh -Command "Invoke-Pester -Configuration $$PesterConfig"
 
 reports:
   Splitwise:
