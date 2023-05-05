@@ -38,8 +38,7 @@ reports:
   Splitwise:
     files:
       - Tests/Unit.Tests.xml
-    file-format:
-      - NUNITXML
+    file-format: NUNITXML
 
 artifacts:
   files:
