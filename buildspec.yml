@@ -15,9 +15,7 @@ phases:
       - rm packages-microsoft-prod.deb
       - sudo apt-get update
       - sudo apt-get install -y powershell
-      - pwsh -Command "Install-Module -Name PSScriptAnalyzer -Force"
-      - pwsh -Command "Install-Module -Name ModuleBuilder -Force -Verbose"
-      - pwsh -Command "Install-Module -Name Pester -Force -Verbose"
+      - pwsh -Command "./Setup.ps1"
 
   pre_build:
     commands:

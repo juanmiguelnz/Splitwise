@@ -1,5 +1,5 @@
 BeforeAll {
-    Import-Module ./Output/Splitwise/Splitwise.psm1
+    Import-Module ./Output/Splitwise/Splitwise.psm1 -Verbose
 }
 
 Describe Get-SplitwiseUser {
