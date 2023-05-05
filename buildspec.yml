@@ -28,7 +28,12 @@ phases:
 
   post_build:
     commands:
-      - pwsh -Command "Invoke-Pester -Path Tests/"
+      - pwsh -Command "Invoke-Pester -Path Tests/ | Export-CliXml -Path Tests/Unit.Tests.xml"
+
+reports:
+  Splitwise:
+    files:
+      - Tests/Unit.Tests.xml
 
 artifacts:
   files:
