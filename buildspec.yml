@@ -21,7 +21,6 @@ phases:
   pre_build:
     commands:
       - pwsh -Command "Invoke-ScriptAnalyzer -Path . -Settings PSGallery -Recurse -Verbose"
-      - pwsh -Command "Get-Item -Path Env:"
 
   build:
     commands:
