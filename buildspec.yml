@@ -29,7 +29,7 @@ phases:
   post_build:
     commands:
       - pwsh -Command "Get-Module -ListAvailable"
-      - pwsh -Command "$PesterConfig=New-PesterConfiguration"
+      - pwsh -Command "New-PesterConfiguration -OutVariable PesterConfig"
       - pwsh -Command "$PesterConfig.TestResult.OutputFormat=NUnitXml"
       - pwsh -Command "$PesterConfig.TestResult.OutputPath=Tests/Unit.Test.xml"
       - pwsh -Command "$PesterConfig.TestResult.Enabled=$True"
