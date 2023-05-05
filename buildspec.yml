@@ -1,8 +1,9 @@
 version: 0.2
 
 env:
-  variables:
-    JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
+  secrets-manager:
+    ACCESS_KEY: "AwsPowerShellCredential:AccessKey"
+    SECRET_KEY: "AwsPowerShellCredential:SecretKey"
 
 phases:
   install:
