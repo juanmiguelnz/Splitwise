@@ -11,6 +11,8 @@ phases:
       dotnet: latest
     commands:
       - export PATH="$PATH:/root/.dotnet/tools"
+      - dotnet tool install -g AWS.CodeArtifact.NuGet.CredentialProvider
+      - dotnet codeartifact-creds install
       - "echo INSTALL PHASE START: `date`"
       - apt-get update -y
       - apt-get install -y wget apt-transport-https software-properties-common
@@ -23,6 +25,7 @@ phases:
 
   pre_build:
     commands:
+      dotnet nuget add source -n splitwise/Splitwise $(aws codeartifact get-repository-endpoint --domain splitwise --domain-owner 451460415697 --repository splitwise --format nuget --query repositoryEndpoint --output text)"v3/index.json"
       - pwsh -Command "Invoke-ScriptAnalyzer -Path . -Settings PSGallery -Recurse -Verbose"
 
   build:
@@ -32,7 +35,6 @@ phases:
   post_build:
     commands:
       - pwsh -Command "./Pester.ps1"
-      - nuget sources add -Name "splitwise/Splitwise" -Source "https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json" -username "aws" -password $(aws codeartifact get-authorization-token --domain splitwise --domain-owner 451460415697 --region us-east-1 --query authorizationToken --output text)
 
 reports:
   Splitwise:
