@@ -28,16 +28,12 @@ phases:
 
   post_build:
     commands:
-      - pwsh -Command "$Env:PesterConfig = New-PesterConfiguration"
-      - pwsh -Command "$Env:PesterConfig.TestResult.OutputFormat = NUnitXml"
-      - pwsh -Command "$Env:PesterConfig.TestResult.OutputPath = Tests/Unit.Test.xml"
-      - pwsh -Command "$Env:PesterConfig.TestResult.Enabled = $$True"
-      - pwsh -Command "Invoke-Pester -Configuration $$PesterConfig"
+      - pwsh -Command "./Pester.ps1"
 
 reports:
   Splitwise:
     files:
-      - Tests/Unit.Tests.xml
+      - Tests/Unit.Test.xml
     file-format: NUNITXML
 
 artifacts:
