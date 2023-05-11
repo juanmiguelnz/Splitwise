@@ -25,7 +25,7 @@ phases:
 
   pre_build:
     commands:
-      dotnet nuget add source -n splitwise/Splitwise $(aws codeartifact get-repository-endpoint --domain splitwise --domain-owner 451460415697 --repository splitwise --format nuget --query repositoryEndpoint --output text)"v3/index.json"
+      - pwsh -Command "dotnet nuget add source $(aws codeartifact get-repository-endpoint --domain splitwise --domain-owner 451460415697 --repository splitwise --format nuget --query repositoryEndpoint --output text)"v3/index.json" -n Splitwise"
       - pwsh -Command "Invoke-ScriptAnalyzer -Path . -Settings PSGallery -Recurse -Verbose"
 
   build:
