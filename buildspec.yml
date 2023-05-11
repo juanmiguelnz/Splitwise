@@ -29,6 +29,7 @@ phases:
   post_build:
     commands:
       - pwsh -Command "./Pester.ps1"
+      - nuget sources add -Name "splitwise/Splitwise" -Source "https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json" -username "aws" -password $(aws codeartifact get-authorization-token --domain splitwise --domain-owner 451460415697 --region us-east-1 --query authorizationToken --output text)
 
 reports:
   Splitwise:
