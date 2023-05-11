@@ -1,18 +1,16 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>PpmPackageTools</id>
-    <version>0.0.1</version>
-    <authors>Visa Spendclarity Enterprise</authors>
-    <owners>Visa Spendclarity Enterprise</owners>
+    <id>Splitwise</id>
+    <version>0.0.2</version>
+    <authors>Miguel Juan</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>PowerShell module to perform Ppm Packaging</description>
-    <projectUrl>https://github.com/Spendvision/PpmPackageTools/</projectUrl>
+    <description>Splitwise PowerShell Module</description>
+    <projectUrl>https://git-codecommit.us-east-1.amazonaws.com/v1/repos/Splitwise</projectUrl>
     <copyright>Copyright 2023</copyright>
-    <tags>PowerShell, Ppm</tags>
+    <tags>PowerShell, Splitwise</tags>
   </metadata>
   <files>
-    <file src="Output/Splitwise/*.psd1" target="" />
-    <file src="Output/Splitwise/*.psm1" target="" />
+    <file src="Output/**.ps*1" target=""/>
   </files>
 </package>
