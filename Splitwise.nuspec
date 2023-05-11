@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>PpmPackageTools</id>
+    <version>0.0.1</version>
+    <authors>Visa Spendclarity Enterprise</authors>
+    <owners>Visa Spendclarity Enterprise</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>PowerShell module to perform Ppm Packaging</description>
+    <projectUrl>https://github.com/Spendvision/PpmPackageTools/</projectUrl>
+    <copyright>Copyright 2023</copyright>
+    <tags>PowerShell, Ppm</tags>
+  </metadata>
+  <files>
+    <file src="Output/Splitwise/*.psd1" target="" />
+    <file src="Output/Splitwise/*.psm1" target="" />
+  </files>
+</package>
