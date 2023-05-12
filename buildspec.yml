@@ -31,11 +31,12 @@ phases:
   build:
     commands:
       - pwsh -Command "./Build.ps1"
+      - pwsh -Command "./Pester.ps1"
 
   post_build:
     commands:
-      - pwsh -Command "./Pester.ps1"
-
+      - dotnet nuget push Output/**/*.ps*1 -s Splitwise
+      
 reports:
   Splitwise:
     files:
