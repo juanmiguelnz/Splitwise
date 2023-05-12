@@ -36,7 +36,7 @@ phases:
   post_build:
     commands:
       - ls
-      - dotnet nuget push Output/Splitwise/Splitwise.psm1 -s Splitwise
+      - dotnet nuget push *.nupkg --source https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json
       
 reports:
   Splitwise:
