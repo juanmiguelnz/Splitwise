@@ -13,13 +13,12 @@ phases:
       - export PATH="$PATH:/root/.dotnet/tools"
       - dotnet tool install -g AWS.CodeArtifact.NuGet.CredentialProvider
       - dotnet codeartifact-creds install
-      - "echo INSTALL PHASE START: `date`"
       - apt-get update -y
       - apt-get install -y wget apt-transport-https software-properties-common
       - wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb"
       - sudo dpkg -i packages-microsoft-prod.deb
       - rm packages-microsoft-prod.deb
-      - sudo apt-get update
+      - sudo apt-get update -y
       - sudo apt-get install -y powershell
       - pwsh -Command "./Setup.ps1"
 
@@ -36,7 +35,7 @@ phases:
   post_build:
     commands:
       - ls
-      - dotnet nuget push Output/Splitwise/*.ps*1 --source Splitwise
+      - nuget push Output/Splitwise/*.ps*1 --source Splitwise
       
 reports:
   Splitwise:
