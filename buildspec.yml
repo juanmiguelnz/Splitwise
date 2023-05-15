@@ -26,7 +26,7 @@ phases:
   pre_build:
     commands:
 #      - nuget sources add -name "splitwise/Splitwise" -Source "https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json" -username "aws" -password "${CODEARTIFACT_AUTH_TOKEN}"
-      - nuget sources add -name "splitwise/Splitwise" $(aws codeartifact get-repository-endpoint --domain splitwise --domain-owner 451460415697 --repository Splitwise --format nuget --query repositoryEndpoint --output text)"v3/index.json"
+      - aws codeartifact login --tool nuget --repository Splitwise --domain splitwise --domain-owner 451460415697 --region us-east-1
       - pwsh -Command "Invoke-ScriptAnalyzer -Path . -Settings PSGallery -Recurse -Verbose"
 
   build:
