@@ -16,9 +16,11 @@ phases:
       - sudo apt-get update -y
       - sudo apt-get install powershell nuget unzip -y
       - wget https://a.co/dbGqKq7 -O ~/credprovider.zip
-      - unzip ~/credprovider.zip ~/credprovider
-      - cp ~/credprovider/netfx/AWS.CodeArtifact.NuGetCredentialProvider ~/.nuget/plugins/netfx
-      - cp ~/credprovider/netcore/AWS.CodeArtifact.NuGetCredentialProvider ~/.nuget/plugins/netcore
+      - ls
+      - unzip ~/credprovider.zip
+      - ls
+#      - cp ~/credprovider/netfx/AWS.CodeArtifact.NuGetCredentialProvider ~/.nuget/plugins/netfx
+#      - cp ~/credprovider/netcore/AWS.CodeArtifact.NuGetCredentialProvider ~/.nuget/plugins/netcore
       - pwsh -Command "./Setup.ps1"
 
   pre_build:
