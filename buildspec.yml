@@ -20,11 +20,12 @@ phases:
       - rm packages-microsoft-prod.deb
       - sudo apt-get update -y
       - sudo apt-get install powershell nuget -y
+      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain splitwise --domain-owner 451460415697 --region us-east-1 --query authorizationToken --output text`
       - pwsh -Command "./Setup.ps1"
 
   pre_build:
     commands:
-      - nuget sources add -name Splitwise -source $(aws codeartifact get-repository-endpoint --domain splitwise --domain-owner 451460415697 --repository Splitwise --format nuget --query repositoryEndpoint --output text)"v3/index.json"
+      - nuget sources add -name "splitwise/Splitwise" -Source "https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json" -username "aws" -password "${CODEARTIFACT_AUTH_TOKEN}"
       - pwsh -Command "Invoke-ScriptAnalyzer -Path . -Settings PSGallery -Recurse -Verbose"
 
   build:
