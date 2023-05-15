@@ -23,11 +23,12 @@ phases:
       - ls ~/.nuget/plugins
       - cp -R codeartifact-nuget-credentialprovider/netfx/AWS.CodeArtifact.NuGetCredentialProvider ~/.nuget/plugins/netfx
       - cp -R codeartifact-nuget-credentialprovider/netcore/AWS.CodeArtifact.NuGetCredentialProvider ~/.nuget/plugins/netcore
+      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain splitwise --domain-owner 451460415697 --region us-east-1 --query authorizationToken --output text`
       - pwsh -Command "./Setup.ps1"
 
   pre_build:
     commands:
-      - nuget sources add -name "splitwise/Splitwise" -Source "https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json"
+      - nuget sources add -name "splitwise/Splitwise" -Source "https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json" -Username "aws" -Password "${CODEARTIFACT_AUTH_TOKEN}"
       - pwsh -Command "Invoke-ScriptAnalyzer -Path . -Settings PSGallery -Recurse -Verbose"
 
   build:
