@@ -19,8 +19,8 @@ phases:
       - ls
       - unzip ~/credprovider.zip
       - ls
-#      - cp ~/credprovider/netfx/AWS.CodeArtifact.NuGetCredentialProvider ~/.nuget/plugins/netfx
-#      - cp ~/credprovider/netcore/AWS.CodeArtifact.NuGetCredentialProvider ~/.nuget/plugins/netcore
+      - cp codeartifact-nuget-credentialprovider/netfx/AWS.CodeArtifact.NuGetCredentialProvider ~/.nuget/plugins/netfx
+      - cp codeartifact-nuget-credentialprovider/netcore/AWS.CodeArtifact.NuGetCredentialProvider ~/.nuget/plugins/netcore
       - pwsh -Command "./Setup.ps1"
 
   pre_build:
