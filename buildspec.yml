@@ -7,26 +7,23 @@ env:
 
 phases:
   install:
-    runtime-versions:
-      dotnet: latest
     commands:
-      - export PATH="$PATH:/root/.dotnet/tools"
-      - dotnet tool install -g AWS.CodeArtifact.NuGet.CredentialProvider
-      - dotnet codeartifact-creds install
       - apt-get update -y
       - apt-get install -y wget apt-transport-https software-properties-common
       - wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb"
       - sudo dpkg -i packages-microsoft-prod.deb
       - rm packages-microsoft-prod.deb
       - sudo apt-get update -y
-      - sudo apt-get install powershell nuget -y
-      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain splitwise --domain-owner 451460415697 --region us-east-1 --query authorizationToken --output text`
+      - sudo apt-get install powershell nuget unzip -y
+      - wget https://a.co/dbGqKq7 -O ~/credprovider.zip
+      - unzip ~/credprovider.zip ~/credprovider
+      - cp ~/credprovider/netfx/AWS.CodeArtifact.NuGetCredentialProvider ~/.nuget/plugins/netfx
+      - cp ~/credprovider/netcore/AWS.CodeArtifact.NuGetCredentialProvider ~/.nuget/plugins/netcore
       - pwsh -Command "./Setup.ps1"
 
   pre_build:
     commands:
-#      - nuget sources add -name "splitwise/Splitwise" -Source "https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json" -username "aws" -password "${CODEARTIFACT_AUTH_TOKEN}"
-      - aws codeartifact login --tool nuget --repository Splitwise --domain splitwise --domain-owner 451460415697 --region us-east-1
+      - nuget sources add -name "splitwise/Splitwise" -Source "https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json"
       - pwsh -Command "Invoke-ScriptAnalyzer -Path . -Settings PSGallery -Recurse -Verbose"
 
   build:
@@ -38,7 +35,7 @@ phases:
     commands:
       - ls
       - nuget pack ./Splitwise.nuspec
-      - nuget push *.nupkg -Source "splitwise/Splitwise"
+      - nuget push Splitwise.0.0.2.nupkg -Source "splitwise/Splitwise"
       
 reports:
   Splitwise:
