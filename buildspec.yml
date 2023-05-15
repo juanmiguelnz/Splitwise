@@ -19,6 +19,8 @@ phases:
       - ls
       - unzip ~/credprovider.zip
       - ls
+      - mkdir ~/.nuget/plugins/netfx ~/.nuget/plugins/netcore
+      - ls ~/.nuget/plugins
       - cp -R codeartifact-nuget-credentialprovider/netfx/AWS.CodeArtifact.NuGetCredentialProvider ~/.nuget/plugins/netfx
       - cp -R codeartifact-nuget-credentialprovider/netcore/AWS.CodeArtifact.NuGetCredentialProvider ~/.nuget/plugins/netcore
       - pwsh -Command "./Setup.ps1"
