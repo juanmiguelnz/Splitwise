@@ -35,7 +35,8 @@ phases:
   post_build:
     commands:
       - ls
-      - pwsh -Command "Publish-Module -Path Output/Splitwise"
+      - nuget pack ./Splitwise.nuspec
+      - nuget push *.nupkg -Source https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json
       
 reports:
   Splitwise:
