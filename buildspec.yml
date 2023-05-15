@@ -19,7 +19,7 @@ phases:
       - sudo dpkg -i packages-microsoft-prod.deb
       - rm packages-microsoft-prod.deb
       - sudo apt-get update -y
-      - sudo apt-get install -y powershell
+      - sudo apt-get install powershell nuget -y
       - pwsh -Command "./Setup.ps1"
 
   pre_build:
@@ -35,7 +35,7 @@ phases:
   post_build:
     commands:
       - ls
-      - nuget push Output/Splitwise/*.ps*1 --source Splitwise
+      - pwsh -Command "Publish-Module -Path Output/Splitwise"
       
 reports:
   Splitwise:

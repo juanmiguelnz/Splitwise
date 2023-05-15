@@ -5,7 +5,7 @@
     <version>0.0.2</version>
     <authors>Miguel Juan</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Splitwise PowerShell Module</description>
+    <description>Splitwise</description>
     <projectUrl>https://git-codecommit.us-east-1.amazonaws.com/v1/repos/Splitwise</projectUrl>
     <copyright>Copyright 2023</copyright>
     <tags>PowerShell, Splitwise</tags>
