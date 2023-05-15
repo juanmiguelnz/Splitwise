@@ -25,7 +25,7 @@ phases:
 
   pre_build:
     commands:
-      - nuget sources add -name Splitwise -Source "https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json" -username "aws" -password "${CODEARTIFACT_AUTH_TOKEN}"
+      - nuget sources add -name "splitwise/Splitwise" -Source "https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json" -username "aws" -password "${CODEARTIFACT_AUTH_TOKEN}"
       - pwsh -Command "Invoke-ScriptAnalyzer -Path . -Settings PSGallery -Recurse -Verbose"
 
   build:
@@ -37,7 +37,7 @@ phases:
     commands:
       - ls
       - nuget pack ./Splitwise.nuspec
-      - nuget push *.nupkg -Source Splitwise
+      - nuget push *.nupkg -Source "splitwise/Splitwise"
       
 reports:
   Splitwise:
