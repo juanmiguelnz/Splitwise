@@ -15,37 +15,57 @@ function Invoke-SplitwiseExpense {
 
     process{
 
-        Import-Csv $CsvFile | ForEach-Object {
-            if (($_.Type -eq "D") -and
-                ($_.Details -notlike "Iag*") -and
-                ($_.Details -notlike "Myrepublic*") -and
-                ($_.Details -notlike "Countdown*") -and
-                ($_.Details -notlike "Pak*") -and
-                ($_.Details -notlike "Skinny*")) {
+        $Csv            = Import-Csv $CsvFile
+        $CsvProperties  = $Csv | Get-Member | Select-Object -ExpandProperty Name
 
-                    $TransactionDate = Get-Date -Date $_.TransactionDate -Format "o"
+        $Csv | ForEach-Object {
 
-                    $Body = @{
-                        group_id        = $GroupID
-                        description     = $_.Details
-                        cost            = $_.Amount
-                        date            = $TransactionDate
-                        split_equally   = $true
-                    }
+            $BankObj = if ($CsvProperties -contains "ProcessedDate") {
+                [PSCustomObject]@{
+                    Name            = "ANZ"
+                    Details         = $_.Details
+                    TransactionDate = (Get-Date -Date $_.TransactionDate -Format "o")
+                }
+            } else {
+                [PSCustomObject]@{
+                    Name            = "AMEX"
+                    Details         = $_.Description
+                    TransactionDate = (Get-Date -Date $_.Date -Format "o")
+                }
+            }
 
-                    $JsonBody = $Body | ConvertTo-Json
+            if ($BankObj.Details -like "*payment*") {
+                Write-Output $BankObj.Details
 
-                    $Params = @{
-                        Method          = "POST"
-                        Uri             = "https://secure.splitwise.com/api/v3.0/create_expense"
-                        Body            = $JsonBody
-                        ContentType     = "application/json"
-                        Authentication  = "Bearer"
-                        Token           = $Token
-                    }
-                    $Request = Invoke-RestMethod @Params
+            } else {
+                if (($BankObj.Details -notlike "Iag*") -and
+                    ($BankObj.Details -notlike "Myrepublic*") -and
+                    ($BankObj.Details -notlike "Countdown*") -and
+                    ($BankObj.Details -notlike "Pak*") -and
+                    ($BankObj.Details -notlike "Skinny*")) {
 
-                    Write-Output $Request.expenses
+                        $Body = @{
+                            group_id        = $GroupID
+                            description     = $BankObj.Details
+                            cost            = $_.Amount
+                            date            = $BankObj.TransactionDate
+                            split_equally   = $True
+                        }
+    
+                        $JsonBody = $Body | ConvertTo-Json
+    
+                        $Params = @{
+                            Method          = "POST"
+                            Uri             = "https://secure.splitwise.com/api/v3.0/create_expense"
+                            Body            = $JsonBody
+                            ContentType     = "application/json"
+                            Authentication  = "Bearer"
+                            Token           = $Token
+                        }
+    
+                        $Request = Invoke-RestMethod @Params
+                        Write-Output $Request.expenses -Verbose
+                }
             }
         }
     }
