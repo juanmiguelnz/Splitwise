@@ -23,7 +23,7 @@ phases:
 
   build:
     commands:
-      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain splitwise --domain-owner 451460415697 --region us-east-1 --query authorizationToken --output text`
+      - aws codeartifact login --tool nuget --domain splitwise --domain-owner 451460415697 --repository Splitwise
 
   post_build:
     commands:
@@ -34,8 +34,3 @@ reports:
     files:
       - Tests/Unit.Test.xml
     file-format: NUNITXML
-
-artifacts:
-  files:
-    - Output/Splitwise/*.ps*1
-  name: Splitwise
