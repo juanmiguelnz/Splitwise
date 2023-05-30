@@ -23,8 +23,8 @@ phases:
 
   build:
     commands:
+      - aws codeartifact get-repository-endpoint --domain splitwise --domain-owner 451460415697 --repository Splitwise --format nuget
       - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain splitwise --domain-owner 451460415697 --query authorizationToken --output text`
-      - echo $CODEARTIFACT_AUTH_TOKEN
 
   post_build:
     commands:
