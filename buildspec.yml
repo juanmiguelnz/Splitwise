@@ -26,7 +26,7 @@ phases:
 #      - pwsh -Command "./Build.ps1"
 #      - pwsh -Command "./Pester.ps1"
       - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain splitwise --domain-owner 451460415697 --region us-east-1 --query authorizationToken --output text`
-#      - nuget sources list
+      - nuget sources list
 #      - nuget sources add -name "splitwise/Splitwise" -Source "https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json" -Username "aws" -Password "${CODEARTIFACT_AUTH_TOKEN}"
 #      - nuget sources list
 #      - nuget pack ./Splitwise.nuspec
@@ -34,7 +34,7 @@ phases:
 
   post_build:
     commands:
-      -ls 
+      - ls 
 #      - nuget push Splitwise.0.0.2.nupkg -Source "splitwise/Splitwise"
       
 reports:
