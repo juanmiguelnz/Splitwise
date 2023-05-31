@@ -26,13 +26,12 @@ phases:
       - pwsh -Command "./Build.ps1"
       - pwsh -Command "./Pester.ps1"
       - aws codeartifact get-repository-endpoint --domain splitwise --domain-owner 451460415697 --repository Splitwise --format nuget
-#      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain splitwise --domain-owner 451460415697 --query authorizationToken --output text`
-      - aws codeartifact login --tool nuget --domain splitwise --domain-owner 451460415697 --repository Splitwise
-      - nuget sources add -name splitwise -Source https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json -Verbosity detailed
-      - echo $CODEARTIFACT_AUTH_TOKEN
+      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain splitwise --domain-owner 451460415697 --query authorizationToken --output text`
+      - echo $CODEARTIFACT_AUTH_TOKEN      
+      - nuget sources add -name splitwise -Source https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json -username aws -password $CODEARTIFACT_AUTH_TOKEN -Verbosity detailed
       - nuget pack Splitwise.nuspec
       - cat ~/.config/NuGet/NuGet.Config
-      - nuget push *.nupkg -Source splitwise/Splitwise
+      - nuget push *.nupkg -Source splitwise
 
   post_build:
     commands:
