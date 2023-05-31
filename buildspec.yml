@@ -31,7 +31,8 @@ phases:
       - nuget sources add -name splitwise -Source https://splitwise-451460415697.d.codeartifact.us-east-1.amazonaws.com/nuget/Splitwise/v3/index.json -username aws -password $CODEARTIFACT_AUTH_TOKEN -Verbosity detailed
       - nuget pack Splitwise.nuspec
       - cat ~/.config/NuGet/NuGet.Config
-      - nuget push *.nupkg -Source splitwise
+      - nuget
+#      - nuget push *.nupkg -Source splitwise
 
   post_build:
     commands:
