@@ -7,7 +7,7 @@ env:
     MYGET_USER: "MyGet:User"
     MYGET_KEY: "MyGet:Key"
   variables:
-    VERSION: "CODEBUILD_BUILD_NUMBER"
+    VERSION: $CODEBUILD_BUILD_NUMBER
 
 phases:
   install:
