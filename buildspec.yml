@@ -40,3 +40,7 @@ reports:
     files:
       - Tests/Unit.Test.xml
     file-format: NUNITXML
+
+artifacts:
+  name: splitwise-$(date +%Y-%m-%d)
+  files: "Output/Splitwise/*"
