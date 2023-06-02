@@ -28,9 +28,9 @@ phases:
       - pwsh -Command "./Build.ps1"
       - pwsh -Command "./Pester.ps1" 
       - export VERSION=1.0."$CODEBUILD_BUILD_NUMBER"
-      - nuget sources add -name splitwise -source https://www.myget.org/F/splitwise/api/v2/package -username $MYGET_USER -password $MYGET_KEY -verbosity detailed
+      - nuget sources add -name splitwise -source https://www.myget.org/F/splitwise/api/v3/index.json -username $MYGET_USER -password $MYGET_KEY
       - nuget pack Splitwise.nuspec -version $VERSION
-      - nuget push *.nupkg $MYGET_KEY -source https://www.myget.org/F/splitwise/api/v3/index.json
+      - nuget push *.nupkg $MYGET_KEY -source splitwise
 
   post_build:
     commands:
