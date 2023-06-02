@@ -29,7 +29,7 @@ phases:
       - pwsh -Command "./Pester.ps1" 
       - nuget sources add -name splitwise -source https://www.myget.org/F/splitwise/api/v2/package -username $MYGET_USER -password $MYGET_KEY -verbosity detailed
       - nuget pack Splitwise.nuspec
-      - nuget push *.nupkg -source https://www.myget.org/F/splitwise/api/v2/package
+      - nuget push *.nupkg $MYGET_KEY -source https://www.myget.org/F/splitwise/api/v2/package
 
   post_build:
     commands:
