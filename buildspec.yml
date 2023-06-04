@@ -2,8 +2,9 @@ version: 0.2
 
 env:
   secrets-manager:
-    ACCESS_KEY: "AwsPowerShellCredential:AccessKey"
-    SECRET_KEY: "AwsPowerShellCredential:SecretKey"
+    ACCOUNT_ID: "AccountID"
+    ACCESS_KEY: "arn:aws:secretsmanager:us-east-1:$ACCOUNT_ID:secret:AwsPowerShellCredential-aQMkkK:AccessKey"
+    SECRET_KEY: "arn:aws:secretsmanager:us-east-1:$ACCOUNT_ID:secret:AwsPowerShellCredential-aQMkkK:SecretKey"
     MYGET_USER: "MyGet:User"
     MYGET_KEY: "MyGet:Key"
 
