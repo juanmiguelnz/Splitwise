@@ -1,6 +1,8 @@
 version: 0.2
 
 env:
+  variables:
+    ACCOUNT_ID: ""
   secrets-manager:
     ACCOUNT_ID: "AccountID"
     ACCESS_KEY: "arn:aws:secretsmanager:us-east-1:$ACCOUNT_ID:secret:AwsPowerShellCredential-aQMkkK:AccessKey"
