@@ -2,7 +2,7 @@ BeforeAll {
     Import-Module ./Output/Splitwise/Splitwise.psm1 -Verbose
 }
 
-Describe Get-SplitwiseUser {
+Describe Get-SplitwiseKey {
     Context "Get Splitwise Key" {
         BeforeAll {
             $SwKey = Get-SplitwiseKey
