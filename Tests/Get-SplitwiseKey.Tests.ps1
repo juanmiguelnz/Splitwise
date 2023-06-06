@@ -3,7 +3,7 @@ BeforeAll {
 }
 
 Describe Get-SplitwiseUser {
-    Context "Get Splitwise User" {
+    Context "Get Splitwise Key" {
         BeforeAll {
             $SwKey = Get-SplitwiseKey
         }
