@@ -2,10 +2,10 @@ version: 0.2
 
 env:
   secrets-manager:
-    ACCESS_KEY: ""
-    SECRET_KEY: ""
-    MYGET_USER: ""
-    MYGET_KEY: ""
+    ACCESS_KEY: "arn:aws:secretsmanager:us-east-1:451460415697:secret:AwsPowerShellCredential-aQMkkK:AccessKey"
+    SECRET_KEY: "arn:aws:secretsmanager:us-east-1:451460415697:secret:AwsPowerShellCredential-aQMkkK:SecretKey"
+    MYGET_USER: "arn:aws:secretsmanager:us-east-1:451460415697:secret:MyGet-CfaaYP:User"
+    MYGET_KEY: "arn:aws:secretsmanager:us-east-1:451460415697:secret:MyGet-CfaaYP:Key"
 
 phases:
   install:
