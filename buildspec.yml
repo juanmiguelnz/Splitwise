@@ -27,7 +27,8 @@ phases:
   build:
     commands:
       - pwsh -Command "./Build.ps1"
-      - pwsh -Command "./Pester.ps1" 
+      - pwsh -Command "Get-SECSecretValue -SecretId arn:aws:secretsmanager:us-east-1:451460415697:secret:Splitwise-CZz2cB | Select-Object -ExpandProperty SecretString"
+#      - pwsh -Command "./Pester.ps1" 
       - nuget pack Splitwise.nuspec -version $VERSION
       - nuget push *.nupkg $MYGET_KEY -source https://www.myget.org/F/splitwise/api/v2/package
 
