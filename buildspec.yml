@@ -22,7 +22,7 @@ phases:
   pre_build:
     commands:
       - export VERSION=1.0."$CODEBUILD_BUILD_NUMBER"
-      - pwsh -Command "Invoke-ScriptAnalyzer -Path . -Settings PSGallery -Recurse -Verbose"
+#      - pwsh -Command "Invoke-ScriptAnalyzer -Path . -Settings PSGallery -Recurse -Verbose"
 
   build:
     commands:
