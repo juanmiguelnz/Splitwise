@@ -23,7 +23,7 @@ phases:
     commands:
       - pwsh -Command "Import-Module AWSPowerShell.NetCore -Force -Verbose"
       - export VERSION=1.0."$CODEBUILD_BUILD_NUMBER"
-      - "pwsh -Command '$Sts=(Use-STSRole -RoleArn "arn:aws:iam::451460415697:role/Role-SecretManager-ProdAccount-Access" -RoleSessionName "CodeBuildRoleSession").Credentials'"
+      - pwsh -Command "$Sts=(Use-STSRole -RoleArn "arn:aws:iam::451460415697:role/Role-SecretManager-ProdAccount-Access" -RoleSessionName "CodeBuildRoleSession").Credentials"
       - pwsh -Command "Set-AWSCredential -AccessKey $Sts.AccessKeyId -Secret $Sts.SecretAccessKey -StoreAs CodeBuildProfile"
 #      - pwsh -Command "Invoke-ScriptAnalyzer -Path . -Settings PSGallery -Recurse -Verbose"
 
