@@ -18,10 +18,10 @@ phases:
       - sudo apt-get update -y
       - sudo apt-get install powershell nuget -y
       - pwsh -Command "Install-Module AWSPowerShell.NetCore -Force"
-      - pwsh -Command "Import-Module AWSPowerShell.NetCore -Force"
 
   pre_build:
     commands:
+      - pwsh -Command "Import-Module AWSPowerShell.NetCore -Force"
       - export VERSION=1.0."$CODEBUILD_BUILD_NUMBER"
       - pwsh -Command "$Sts = (Use-STSRole -RoleArn "arn:aws:iam::451460415697:role/Role-SecretManager-ProdAccount-Access" -RoleSessionName "CodeBuildRoleSession").Credentials"
       - pwsh -Command "Set-AWSCredential -AccessKey $Sts.AccessKeyId -Secret $Sts.SecretAccessKey -StoreAs CodeBuildProfile"
