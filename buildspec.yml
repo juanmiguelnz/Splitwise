@@ -6,6 +6,7 @@ env:
     SECRET_KEY: "AwsPowerShellCredential:SecretKey"
     MYGET_USER: "MyGet:User"
     MYGET_KEY: "MyGet:Key"
+    SPLITWISE_KEY: "Splitwise"
 
 phases:
   install:
