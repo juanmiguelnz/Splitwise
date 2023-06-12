@@ -9,7 +9,7 @@ Describe Get-SplitwiseKey {
             $SwKey = Get-SplitwiseKey
         }
 
-        It "Returns current user" {
+        It "Returns SecureString" {
             
             $SwKey | Should -Be "System.Security.SecureString"
         }
