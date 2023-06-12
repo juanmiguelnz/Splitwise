@@ -18,7 +18,7 @@ phases:
       - rm packages-microsoft-prod.deb
       - sudo apt-get update -y
       - sudo apt-get install powershell nuget -y
-      - pwsh -Command "Install-Module -Name PSScriptAnalyzer, ModuleBuilder, Pester, AWSPowerShell.NetCore -Force"
+      - pwsh -Command "./Setup.ps1"
 
   pre_build:
     commands:
