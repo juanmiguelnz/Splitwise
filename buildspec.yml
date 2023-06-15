@@ -42,5 +42,5 @@ reports:
     file-format: NUNITXML
 
 artifacts:
-  name: splitwise-$(date +%Y-%m-%d)
+  name: $VERSION
   files: "Output/Splitwise/*"
