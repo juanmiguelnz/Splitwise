@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: \Splitwise.psm1
+  - source: Splitwise.psm1
     destination: /home/ec2-user
 #hooks:
 #  BeforeInstall:
