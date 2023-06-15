@@ -42,5 +42,14 @@ reports:
     file-format: NUNITXML
 
 artifacts:
-  name: $VERSION
-  files: "Output/Splitwise/*"
+  files:
+    - "**/*"
+  secondary-artifacts:
+    artifact1:
+      files:
+        - appspec.yml
+      name: AppSpecFile-$VERSION
+    artifact2:
+      files:
+        - "Output/Splitwise/*"
+      name: Splitwise-$VERSION
