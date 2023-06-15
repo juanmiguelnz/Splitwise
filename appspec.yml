@@ -3,6 +3,9 @@ os: linux
 files:
   - source: Output/Splitwise/Splitwise.psm1
     destination: /home/ec2-user
+  - source: Output/Splitwise/Splitwise.psd1
+    destination: /home/ec2-user
+
 #hooks:
 #  BeforeInstall:
 #    - location: \before-install.bat
