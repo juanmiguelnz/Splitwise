@@ -11,6 +11,7 @@
     <tags>PowerShell, Splitwise</tags>
   </metadata>
   <files>
-    <file src="Output/**.ps*1" target="../"/>
+    <file src="Output/Splitwise/**.psm1" target=""/>
+    <file src="Output/Splitwise/**.psd1" target=""/>
   </files>
 </package>
