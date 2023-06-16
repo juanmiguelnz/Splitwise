@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: Output/Splitwise
-    destination: /opt/microsoft/powershell/7/Modules/Output
+    destination: /opt/microsoft/powershell/7/Modules/Splitwise
   - source: Scripts/deploy.sh
     destination: /home/ec2-user
 
