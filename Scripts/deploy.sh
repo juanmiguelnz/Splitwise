@@ -1,0 +1,1 @@
+pwsh -c "Import-Module Splitwise.psm1"

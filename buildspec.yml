@@ -54,3 +54,7 @@ artifacts:
       files:
         - "Output/Splitwise/*"
       name: Splitwise-$VERSION
+    artifact3:
+      files:
+        - "Scripts/deploy.sh"
+      name: deploy.sh
