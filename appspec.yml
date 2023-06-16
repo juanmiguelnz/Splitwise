@@ -1,14 +1,12 @@
 version: 0.0
 os: linux
 files:
-  - source: Output/Splitwise/Splitwise.psm1
-    destination: /home/ec2-user
-  - source: Output/Splitwise/Splitwise.psd1
-    destination: /home/ec2-user
+  - source: Output/*
+    destination: /opt/microsoft/powershell/7/Modules
   - source: Scripts/deploy.sh
     destination: /home/ec2-user
 
-hooks:
- Install:
-   - location: ./deploy.sh
-     timeout: 900
+# hooks:
+#  Install:
+#    - location: ./deploy.sh
+#      timeout: 900
