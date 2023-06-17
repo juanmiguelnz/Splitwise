@@ -2,11 +2,11 @@ version: 0.2
 
 env:
   secrets-manager:
-    ACCESS_KEY: "AwsPowerShellCredential:AccessKey"
-    SECRET_KEY: "AwsPowerShellCredential:SecretKey"
-    MYGET_USER: "MyGet:User"
-    MYGET_KEY: "MyGet:Key"
-    SPLITWISE_KEY: "Splitwise"
+    ACCESS_KEY: "Splitwise:PowerShellAccKey"
+    SECRET_KEY: "Splitwise:PowerShellSecKey"
+    MYGET_USER: "Splitwise:MyGetUser"
+    MYGET_KEY: "Splitwise:MyGetKey"
+    SPLITWISE_KEY: "Splitwise:SplitwiseApiKey"
 
 phases:
   install:
