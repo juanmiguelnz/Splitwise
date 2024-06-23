@@ -34,4 +34,4 @@ jobs:
         shell: pwsh
         run: |
           Get-ChildItem -Path Output/Splitwise
-          Publish-Module -Path Output/Splitwise -NugetApiKey -$Env:NuGetApiKey -Repository PSGallery -Verbose
+          Publish-Module -Path Output/Splitwise -NugetApiKey $Env:NuGetApiKey -Repository PSGallery -Verbose
