@@ -33,4 +33,5 @@ jobs:
       - name: Publish Module
         shell: pwsh
         run: |
-          Get-ChildItem -Path Output
+          Get-ChildItem -Path Output/Splitwise
+          Publish-Module -Path Output/Splitwise -NugetApiKey -$Env:NuGetApiKey -Repository PSGallery -Verbose
