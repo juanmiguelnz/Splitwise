@@ -33,4 +33,4 @@ jobs:
       - name: Publish Module
         shell: pwsh
         run: |
-          Get-ChildItem -Path .
+          Get-ChildItem -Path Output
